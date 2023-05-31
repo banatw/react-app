@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import ListData from "./componentes/ListData";
+import { BrowserRouter as Router,Route,Routes} from "react-router-dom";
+import About from "./componentes/About";
+import ProductAdd from "./componentes/ProductAdd";
+import ProductEdit from "./componentes/ProductEdit";
 
 function App() {
+  
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <Router>
+          <Routes>
+            <Route path="/" element={<ListData /> } />
+            <Route path="/about" element={<About />} />
+            <Route path="/add" element={<ProductAdd />} />
+            <Route path="/edit/:id" element={<ProductEdit />} />
+          </Routes>
+        </Router>
+      {/* Nama : {name} <button onClick={changeName}>Change Name</button> */}
     </div>
   );
 }
