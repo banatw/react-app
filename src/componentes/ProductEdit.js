@@ -10,14 +10,14 @@ const ProductEdit = () => {
     const submitData = async (e) => {
         e.preventDefault();
         const data = {name,price}
-        await fetch('http://localhost:5000/products',{
-            method : "POST",
+        await fetch(`http://localhost:5000/products/${id}`,{
+            method : "PUT",
             body : JSON.stringify(data),
             headers : {
                 'Content-Type' : 'application/json'
             }
         })
-        navigate('/')
+        navigate('/data')
     }
 
     const getById  = async () => {

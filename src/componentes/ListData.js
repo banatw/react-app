@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react'
+import { NavLink } from 'react-router-dom';
 
 
 const ListData = () => {
@@ -15,13 +16,17 @@ const ListData = () => {
     fetchData()
   },[])
 
-
-  
+  const hapus = async(id) => {
+    await fetch(`http://localhost:5000/products/${id}`,{
+            method : "DELETE",
+        })
+    fetchData();
+  }
 
   return (
     <div>
-        <div><h1>API</h1></div>
-        <table>
+        <div><NavLink to={`/add`}><button className='button is-success'>Add</button></NavLink></div>
+        <table className='table is-fullwitdh'>
           <thead>
             <tr>
             <th>Nama</th>
@@ -34,7 +39,8 @@ const ListData = () => {
               <tr key={p.id}>
                   <td>{p.name}</td>
                   <td>{p.price}</td>
-                  <td><button>Delete</button></td>
+                  <td><NavLink to={`/edit/${p.id}`}><button className='button is-link'>Edit</button></NavLink></td>
+                  <td><button onClick={() => hapus(p.id)} className='button is-danger'>Hapus</button></td>
               </tr>
             ))}
           </tbody>

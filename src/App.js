@@ -1,26 +1,24 @@
-import { useEffect, useState } from "react";
 import ListData from "./componentes/ListData";
-import { BrowserRouter as Router,Route,Routes} from "react-router-dom";
+import { BrowserRouter as Router,Route,Routes,Link,Outlet, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom";
 import About from "./componentes/About";
 import ProductAdd from "./componentes/ProductAdd";
 import ProductEdit from "./componentes/ProductEdit";
+import RootLayout from "./componentes/RootLayout";
 
-function App() {
-  
- 
-
-  return (
-    <div>
-        <Router>
-          <Routes>
-            <Route path="/" element={<ListData /> } />
+const router1 = createBrowserRouter(
+  createRoutesFromElements(
+          <Route path="/" element={<RootLayout />}>
+            <Route path="/data" element={<ListData /> } />
             <Route path="/about" element={<About />} />
             <Route path="/add" element={<ProductAdd />} />
             <Route path="/edit/:id" element={<ProductEdit />} />
-          </Routes>
-        </Router>
-      {/* Nama : {name} <button onClick={changeName}>Change Name</button> */}
-    </div>
+          </Route>
+  )
+)
+
+function App() {
+  return (
+    <div><RouterProvider router={router1} /> </div>
   );
 }
 

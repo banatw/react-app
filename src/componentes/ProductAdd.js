@@ -17,7 +17,7 @@ const ProductAdd = () => {
                 'Content-Type' : 'application/json'
             }
         })
-        navigate('/')
+        navigate('/data')
     }
 
   return (
@@ -26,13 +26,13 @@ const ProductAdd = () => {
             <div className="field">
                 <label className="label">Name</label>
                 <div className="control">
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value) }></input>
+                    <input className='input' type="text" value={name} onChange={(e) => setName(e.target.value) }></input>
                 </div>
             </div>
             <div className="field">
                 <label className="label">Price</label>
                 <div className="control">
-                    <input type="text" value={price}  onChange={(e) => setPrice(e.target.value) }></input>
+                    <input className='input' type="text" value={price}  onChange={(e) => setPrice(e.target.value) }></input>
                 </div>
             </div>
             <div className="field">
